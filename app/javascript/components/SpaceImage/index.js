@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default function SpaceImage({ image }) {
   return (
@@ -13,5 +13,5 @@ export default function SpaceImage({ image }) {
         View Original
       </a>
     </div>
-  );
+  )
 }
