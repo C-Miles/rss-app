@@ -9,10 +9,10 @@ export default function SpaceImage({ image, onClick }) {
   }
 
   return (
-    <div onClick={onClick} style={styles.imageWrapper}>
+    <div onClick={onClick} className="space-image">
       {loading && (
         <div style={styles.spinnerWrapper}>
-          <ClipLoader size="3em" color="#f3f3f3" />
+          <ClipLoader size={30} color="#f3f3f3" />
         </div>
       )}
       <img
@@ -26,27 +26,16 @@ export default function SpaceImage({ image, onClick }) {
 }
 
 const styles = {
-  imageWrapper: {
-    cursor: 'pointer',
-    borderRadius: '50%',
-    overflow: 'hidden',
-    width: '20vw',
-    height: '20vw',
-    transition: 'transform 0.3s',
-    position: 'relative',
-    maxWidth: '25rem',
-    maxHeight: '25rem',
+  spinnerWrapper: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
   },
   image: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
     display: 'block',
-  },
-  spinnerWrapper: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
   },
 }

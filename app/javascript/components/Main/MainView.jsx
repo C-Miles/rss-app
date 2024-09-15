@@ -18,7 +18,7 @@ export default function MainView({
 }) {
   return (
     <div style={styles.wrapper}>
-      <h1 style={styles.title}>Space Image Gallery</h1>
+      <h1 style={styles.title}>NASA Space Image Gallery</h1>
 
       <div style={styles.searchBarContainer}>
         <SearchBar value={searchTerm} onChange={handleInputChange} />
@@ -29,7 +29,7 @@ export default function MainView({
           <ClipLoader size={40} color="#f3f3f3" />
         </div>
       ) : (
-        <div style={styles.container}>
+        <div className="grid-container">
           {spaceImages.length > 0 ? (
             spaceImages.map((image) => (
               <SpaceImage
@@ -66,16 +66,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '2rem',
-    justifyItems: 'center',
-    width: '100%',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 1rem',
   },
   title: {
     color: '#FFFFFF',
