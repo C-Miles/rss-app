@@ -18,7 +18,9 @@ export default function MainView({
 }) {
   return (
     <div style={styles.wrapper}>
-      <h1 style={styles.title}>NASA Space Image Gallery</h1>
+      <header style={styles.header}>
+        <h1 style={styles.title}>Space Image Gallery</h1>
+      </header>
 
       <div style={styles.searchBarContainer}>
         <SearchBar value={searchTerm} onChange={handleInputChange} />
@@ -58,41 +60,47 @@ export default function MainView({
 }
 
 const styles = {
-  wrapper: {
-    backgroundColor: '#1D1D21',
-    padding: '2rem 0',
-    textAlign: 'center',
-    minHeight: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
+  bottomSpinner: {
     alignItems: 'center',
-  },
-  title: {
-    color: '#FFFFFF',
-    fontSize: '2.25rem',
-    fontWeight: 'bold',
-    marginBottom: '1.25rem',
-  },
-  spinnerContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    height: '50vh',
+    marginTop: '1.25rem',
+  },
+  header: {
+    backgroundColor: '#000000',
+    padding: '1rem 0',
+    textAlign: 'center',
+    width: '100%',
+    zIndex: 1000,
   },
   noResults: {
     color: '#FFFFFF',
     fontSize: '1.5rem',
     marginTop: '1.25rem',
   },
-  bottomSpinner: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '1.25rem',
-  },
   searchBarContainer: {
-    width: '100%',
+    margin: '1.5rem auto 1.25rem auto',
     maxWidth: '50rem',
-    margin: '0 auto 1.25rem auto',
+    width: '100%',
+  },
+  spinnerContainer: {
+    alignItems: 'center',
+    display: 'flex',
+    height: '50vh',
+    justifyContent: 'center',
+  },
+  title: {
+    color: '#FFFFFF',
+    fontSize: '2rem',
+    fontWeight: 'bold',
+    margin: 0,
+  },
+  wrapper: {
+    alignItems: 'center',
+    backgroundColor: '#1D1D21',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+    textAlign: 'center',
   },
 }
