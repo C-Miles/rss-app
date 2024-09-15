@@ -13,8 +13,8 @@ export default function SpaceImage({ image, onClick }) {
       cursor: 'pointer',
       borderRadius: '50%',
       overflow: 'hidden',
-      width: '250px',
-      height: '250px',
+      width: '300px',
+      height: '300px',
       transition: 'transform 0.3s',
       position: 'relative',
     },
@@ -36,7 +36,7 @@ export default function SpaceImage({ image, onClick }) {
     <div onClick={onClick} style={styles.imageWrapper}>
       {loading && (
         <div style={styles.spinnerWrapper}>
-          <Spinner size={40} /> {/* Using smaller spinner */}
+          <Spinner size={30} />
         </div>
       )}
       <img

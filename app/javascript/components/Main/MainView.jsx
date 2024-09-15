@@ -21,17 +21,19 @@ export default function MainView({
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '40px',
-      padding: '40px',
-      backgroundColor: '#1D1D21',
-      color: '#FFFFFF',
-      minHeight: '100vh',
-      overflowY: 'scroll',
+      justifyItems: 'center',
+      width: '100%',
+      margin: '40px auto',
+      padding: '0 20px',
     },
     wrapper: {
       backgroundColor: '#1D1D21',
-      padding: '40px',
+      padding: '40px 0',
       textAlign: 'center',
       minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
     spinnerContainer: {
       display: 'flex',
@@ -50,11 +52,18 @@ export default function MainView({
       alignItems: 'center',
       marginTop: '20px',
     },
+    searchBarContainer: {
+      width: '100%',
+      maxWidth: '800px',
+      margin: '0 auto',
+    },
   }
 
   return (
     <div style={styles.wrapper}>
-      <SearchBar value={searchTerm} onChange={handleInputChange} />
+      <div style={styles.searchBarContainer}>
+        <SearchBar value={searchTerm} onChange={handleInputChange} />
+      </div>
 
       {loading && spaceImages.length === 0 ? (
         <div style={styles.spinnerContainer}>
