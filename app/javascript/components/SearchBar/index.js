@@ -3,16 +3,16 @@ import React from 'react'
 export default function SearchBar({ value, onChange }) {
   const styles = {
     input: {
-      width: '100%',
-      maxWidth: '600px',
-      padding: '10px',
-      fontSize: '16px',
-      margin: '20px auto',
+      width: '80%',
+      maxWidth: '40rem',
+      padding: '1rem',
+      fontSize: '1rem',
+      margin: '1.5rem auto',
       display: 'block',
-      borderRadius: '8px',
+      borderRadius: '0.5rem',
       backgroundColor: '#1D1D21',
       color: '#FFFFFF',
-      border: '2px solid #000000',
+      border: '0.2rem solid #000000',
       outline: 'none',
       transition: 'border-color 0.3s',
     },

@@ -16,7 +16,6 @@ export default function MainView({
   selectedImage,
   spaceImages,
 }) {
-
   return (
     <div style={styles.wrapper}>
 
@@ -26,23 +25,19 @@ export default function MainView({
         <SearchBar value={searchTerm} onChange={handleInputChange} />
       </div>
 
-      {loading && spaceImages.length === 0 ? (
-        <div style={styles.spinnerContainer}>
-          <ClipLoader size={40} color="#f3f3f3" />
-        </div>
-      ) : spaceImages.length === 0 && searchTerm ? (
-        <p style={styles.noResults}>No results found for "{searchTerm}"</p>
-      ) : (
-        <div style={styles.container}>
-          {spaceImages.map((image) => (
+      <div style={styles.container}>
+        {spaceImages.length > 0 ? (
+          spaceImages.map((image) => (
             <SpaceImage
               key={image.id}
               image={image}
               onClick={() => handleImageClick(image)}
             />
-          ))}
-        </div>
-      )}
+          ))
+        ) : (
+          searchTerm && <p style={styles.noResults}>No results found for "{searchTerm}"</p>
+        )}
+      </div>
 
       {selectedImage && <Modal image={selectedImage} onClose={closeModal} />}
 
@@ -56,50 +51,51 @@ export default function MainView({
 }
 
 const styles = {
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '40px',
-    justifyItems: 'center',
-    width: '100%',
-    margin: '40px auto',
-    padding: '0 20px',
-  },
   wrapper: {
     backgroundColor: '#1D1D21',
-    padding: '40px 0',
+    padding: '2rem 0',
     textAlign: 'center',
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '2rem',
+    justifyItems: 'center',
+    width: '100%',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 1rem',
+  },
   title: {
     color: '#FFFFFF',
-    fontSize: '36px',
+    fontSize: '2.25rem',
     fontWeight: 'bold',
-    marginBottom: '20px',
+    marginBottom: '1.25rem',
   },
   spinnerContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
+    height: '50vh',
   },
   noResults: {
     color: '#FFFFFF',
-    fontSize: '24px',
-    marginTop: '20px',
+    fontSize: '1.5rem',
+    marginTop: '1.25rem',
   },
   bottomSpinner: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '20px',
+    marginTop: '1.25rem',
   },
   searchBarContainer: {
     width: '100%',
-    maxWidth: '800px',
-    margin: '0 auto',
+    maxWidth: '50rem',
+    margin: '0 auto 1.25rem auto',
   },
 }

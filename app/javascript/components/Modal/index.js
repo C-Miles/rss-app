@@ -37,8 +37,9 @@ const styles = {
   modal: {
     backgroundColor: '#1D1D21',
     borderRadius: '8px',
-    padding: '20px',
-    width: '600px',
+    padding: '2rem',
+    width: '90%',
+    maxWidth: '600px',
     maxHeight: '80vh',
     display: 'flex',
     flexDirection: 'column',
@@ -49,12 +50,12 @@ const styles = {
   },
   closeButton: {
     position: 'absolute',
-    top: '10px',
-    right: '10px',
+    top: '1rem',
+    right: '1rem',
     cursor: 'pointer',
     background: 'transparent',
     border: 'none',
-    fontSize: '24px',
+    fontSize: '1.5rem',
     color: '#FFFFFF',
   },
   image: {
@@ -64,7 +65,7 @@ const styles = {
     borderRadius: '8px',
   },
   content: {
-    marginTop: '20px',
+    marginTop: '1.5rem',
     textAlign: 'center',
     width: '100%',
     color: '#FFFFFF',
@@ -72,6 +73,6 @@ const styles = {
   link: {
     color: '#FFFFFF',
     textDecoration: 'underline',
-    marginTop: '10px',
+    marginTop: '1rem',
   },
 }
