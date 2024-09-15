@@ -8,30 +8,6 @@ export default function SpaceImage({ image, onClick }) {
     setLoading(false)
   }
 
-  const styles = {
-    imageWrapper: {
-      cursor: 'pointer',
-      borderRadius: '50%',
-      overflow: 'hidden',
-      width: '300px',
-      height: '300px',
-      transition: 'transform 0.3s',
-      position: 'relative',
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      display: loading ? 'none' : 'block',
-    },
-    spinnerWrapper: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  }
-
   return (
     <div onClick={onClick} style={styles.imageWrapper}>
       {loading && (
@@ -47,4 +23,28 @@ export default function SpaceImage({ image, onClick }) {
       />
     </div>
   )
+}
+
+const styles = {
+  imageWrapper: {
+    cursor: 'pointer',
+    borderRadius: '50%',
+    overflow: 'hidden',
+    width: '300px',
+    height: '300px',
+    transition: 'transform 0.3s',
+    position: 'relative',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    display: 'block',
+  },
+  spinnerWrapper: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
 }

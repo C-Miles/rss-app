@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Modal from '../Modal'
 import SearchBar from '../SearchBar'
 import SpaceImage from '../SpaceImage'
@@ -16,54 +15,6 @@ export default function MainView({
   selectedImage,
   spaceImages,
 }) {
-  const styles = {
-    container: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '40px',
-      justifyItems: 'center',
-      width: '100%',
-      margin: '40px auto',
-      padding: '0 20px',
-    },
-    wrapper: {
-      backgroundColor: '#1D1D21',
-      padding: '40px 0',
-      textAlign: 'center',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    title: {
-      color: '#FFFFFF',
-      fontSize: '36px',
-      fontWeight: 'bold',
-      marginBottom: '20px',
-    },
-    spinnerContainer: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-    },
-    noResults: {
-      color: '#FFFFFF',
-      fontSize: '24px',
-      marginTop: '20px',
-    },
-    bottomSpinner: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: '20px',
-    },
-    searchBarContainer: {
-      width: '100%',
-      maxWidth: '800px',
-      margin: '0 auto',
-    },
-  }
 
   return (
     <div style={styles.wrapper}>
@@ -100,4 +51,53 @@ export default function MainView({
       )}
     </div>
   )
+}
+
+const styles = {
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '40px',
+    justifyItems: 'center',
+    width: '100%',
+    margin: '40px auto',
+    padding: '0 20px',
+  },
+  wrapper: {
+    backgroundColor: '#1D1D21',
+    padding: '40px 0',
+    textAlign: 'center',
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  title: {
+    color: '#FFFFFF',
+    fontSize: '36px',
+    fontWeight: 'bold',
+    marginBottom: '20px',
+  },
+  spinnerContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+  },
+  noResults: {
+    color: '#FFFFFF',
+    fontSize: '24px',
+    marginTop: '20px',
+  },
+  bottomSpinner: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '20px',
+  },
+  searchBarContainer: {
+    width: '100%',
+    maxWidth: '800px',
+    margin: '0 auto',
+  },
 }
