@@ -8,20 +8,24 @@ export default function Modal({ image, onClose }) {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: 'rgba(29, 29, 33, 0.85)',
+      backgroundColor: 'rgba(75, 75, 85, 0.7)',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 1000,
     },
     modal: {
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#1D1D21',
       borderRadius: '8px',
       padding: '20px',
       width: '600px',
       maxHeight: '80vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
       overflowY: 'auto',
       position: 'relative',
+      color: '#FFFFFF',
     },
     closeButton: {
       position: 'absolute',
@@ -31,15 +35,24 @@ export default function Modal({ image, onClose }) {
       background: 'transparent',
       border: 'none',
       fontSize: '24px',
+      color: '#FFFFFF',
     },
     image: {
-      width: '100%',
-      height: 'auto',
+      maxWidth: '100%',
+      maxHeight: '40vh',
+      objectFit: 'contain',
       borderRadius: '8px',
     },
     content: {
       marginTop: '20px',
-      color: '#1D1D21',
+      textAlign: 'center',
+      width: '100%',
+      color: '#FFFFFF',
+    },
+    link: {
+      color: '#FFFFFF',
+      textDecoration: 'underline',
+      marginTop: '10px',
     },
   }
 
@@ -54,7 +67,7 @@ export default function Modal({ image, onClose }) {
           <h2>{image.title}</h2>
           <p>{new Date(image.publication_date).toLocaleDateString()}</p>
           <p dangerouslySetInnerHTML={{ __html: image.description }} />
-          <a href={image.link} target="_blank" rel="noopener noreferrer">
+          <a href={image.link} target="_blank" rel="noopener noreferrer" style={styles.link}>
             View Original
           </a>
         </div>
