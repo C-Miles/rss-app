@@ -35,6 +35,12 @@ export default function MainView({
       flexDirection: 'column',
       alignItems: 'center',
     },
+    title: {
+      color: '#FFFFFF',
+      fontSize: '36px',
+      fontWeight: 'bold',
+      marginBottom: '20px',
+    },
     spinnerContainer: {
       display: 'flex',
       justifyContent: 'center',
@@ -61,6 +67,8 @@ export default function MainView({
 
   return (
     <div style={styles.wrapper}>
+      <h1 style={styles.title}>Space Image Gallery</h1>
+
       <div style={styles.searchBarContainer}>
         <SearchBar value={searchTerm} onChange={handleInputChange} />
       </div>
