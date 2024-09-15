@@ -24,15 +24,25 @@ export default function MainContainer() {
 
   const fetchImages = async () => {
     setLoading(true)
+
     try {
       const response = await axios.get('/space_images.json', {
-        params: { search: searchTerm, page }
+        params: { search: searchTerm, page },
       })
 
       const fetchedImages = response.data
-      if (fetchedImages.length < 12) setHasMore(false)
 
-      setSpaceImages((prevImages) => [...prevImages, ...fetchedImages])
+      if (fetchedImages.length < 12) {
+        setHasMore(false)
+      } else {
+        setHasMore(true)
+      }
+
+      if (page === 1) {
+        setSpaceImages(fetchedImages)
+      } else {
+        setSpaceImages((prevImages) => [...prevImages, ...fetchedImages])
+      }
     } catch (err) {
       console.error('Error fetching space images:', err)
       setError(err)
@@ -42,9 +52,11 @@ export default function MainContainer() {
   }
 
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value)
+    const newSearchTerm = e.target.value
+    setSearchTerm(newSearchTerm)
     setPage(1)
     setSpaceImages([])
+    setHasMore(true)
   }
 
   useEffect(() => {
