@@ -18,30 +18,37 @@ export default function MainView({
 }) {
   return (
     <div style={styles.wrapper}>
-
       <h1 style={styles.title}>Space Image Gallery</h1>
 
       <div style={styles.searchBarContainer}>
         <SearchBar value={searchTerm} onChange={handleInputChange} />
       </div>
 
-      <div style={styles.container}>
-        {spaceImages.length > 0 ? (
-          spaceImages.map((image) => (
-            <SpaceImage
-              key={image.id}
-              image={image}
-              onClick={() => handleImageClick(image)}
-            />
-          ))
-        ) : (
-          searchTerm && <p style={styles.noResults}>No results found for "{searchTerm}"</p>
-        )}
-      </div>
+      {loading && spaceImages.length === 0 ? (
+        <div style={styles.spinnerContainer}>
+          <ClipLoader size={40} color="#f3f3f3" />
+        </div>
+      ) : (
+        <div style={styles.container}>
+          {spaceImages.length > 0 ? (
+            spaceImages.map((image) => (
+              <SpaceImage
+                key={image.id}
+                image={image}
+                onClick={() => handleImageClick(image)}
+              />
+            ))
+          ) : (
+            !loading && searchTerm && (
+              <p style={styles.noResults}>No results found for "{searchTerm}"</p>
+            )
+          )}
+        </div>
+      )}
 
       {selectedImage && <Modal image={selectedImage} onClose={closeModal} />}
 
-      {hasMore && (
+      {hasMore && !loading && (
         <div ref={bottomRef} style={styles.bottomSpinner}>
           <ClipLoader size={40} color="#f3f3f3" />
         </div>
