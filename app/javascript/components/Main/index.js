@@ -11,6 +11,7 @@ export default function MainContainer() {
   const [searchTerm, setSearchTerm] = useState('')
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
+  const [selectedImage, setSelectedImage] = useState(null)
 
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -40,14 +41,6 @@ export default function MainContainer() {
     }
   }
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image)
-  }
-
-  const closeModal = () => {
-    setSelectedImage(null)
-  }
-
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value)
     setPage(1)
@@ -63,13 +56,14 @@ export default function MainContainer() {
   return (
     <MainView
       bottomRef={ref}
-      closeModal={closeModal}
+      closeModal={() => setSelectedImage(null)}
       error={error}
-      handleImageClick={handleImageClick}
+      handleImageClick={setSelectedImage}
       handleInputChange={handleInputChange}
       hasMore={hasMore}
       loading={loading}
       searchTerm={searchTerm}
+      selectedImage={selectedImage}
       spaceImages={spaceImages}
     />
   )
