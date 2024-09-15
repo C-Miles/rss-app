@@ -1,8 +1,9 @@
 import React from 'react'
+import { ClipLoader } from 'react-spinners'
+
 import Modal from '../Modal'
 import SearchBar from '../SearchBar'
 import SpaceImage from '../SpaceImage'
-import Spinner from '../Spinner'
 
 export default function MainView({
   bottomRef,
@@ -18,6 +19,7 @@ export default function MainView({
 
   return (
     <div style={styles.wrapper}>
+
       <h1 style={styles.title}>Space Image Gallery</h1>
 
       <div style={styles.searchBarContainer}>
@@ -26,7 +28,7 @@ export default function MainView({
 
       {loading && spaceImages.length === 0 ? (
         <div style={styles.spinnerContainer}>
-          <Spinner />
+          <ClipLoader size={40} color="#f3f3f3" />
         </div>
       ) : spaceImages.length === 0 && searchTerm ? (
         <p style={styles.noResults}>No results found for "{searchTerm}"</p>
@@ -46,7 +48,7 @@ export default function MainView({
 
       {hasMore && (
         <div ref={bottomRef} style={styles.bottomSpinner}>
-          <Spinner size={40} />
+          <ClipLoader size={40} color="#f3f3f3" />
         </div>
       )}
     </div>

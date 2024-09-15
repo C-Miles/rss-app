@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Spinner from '../Spinner'
+import { ClipLoader } from 'react-spinners'
 
 export default function SpaceImage({ image, onClick }) {
   const [loading, setLoading] = useState(true)
@@ -12,7 +12,7 @@ export default function SpaceImage({ image, onClick }) {
     <div onClick={onClick} style={styles.imageWrapper}>
       {loading && (
         <div style={styles.spinnerWrapper}>
-          <Spinner size={30} />
+          <ClipLoader size={30} color="#f3f3f3" />
         </div>
       )}
       <img
