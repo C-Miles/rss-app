@@ -88,6 +88,12 @@ module.exports = function(api) {
           async: false
         }
       ],
+      [
+        '@babel/plugin-transform-for-of',
+        {
+          loose: true
+        }
+      ],
       isProductionEnv && [
         'babel-plugin-transform-react-remove-prop-types',
         {
