@@ -1,48 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import SpaceImage from '../SpaceImage'
+import React from 'react'
+
 import Modal from '../Modal'
 import SearchBar from '../SearchBar'
+import SpaceImage from '../SpaceImage'
 import Spinner from '../Spinner'
 
-export default function MainView() {
-  const [spaceImages, setSpaceImages] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedImage, setSelectedImage] = useState(null)
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    fetchImages()
-  }, [searchTerm])
-
-  const fetchImages = async () => {
-    setLoading(true)
-    try {
-      const response = await axios.get('/space_images.json', {
-        params: {
-          search: searchTerm,
-        },
-      })
-      setSpaceImages(response.data)
-    } catch (error) {
-      console.error('Error fetching space images:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const handleImageClick = (image) => {
-    setSelectedImage(image)
-  }
-
-  const closeModal = () => {
-    setSelectedImage(null)
-  }
-
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
-
+export default function MainView({
+  closeModal,
+  handleImageClick,
+  handleInputChange,
+  loading,
+  searchTerm,
+  selectedImage,
+  spaceImages,
+}) {
   const styles = {
     container: {
       display: 'grid',
@@ -58,12 +29,18 @@ export default function MainView() {
       backgroundColor: '#1D1D21',
       padding: '40px',
       textAlign: 'center',
+      minHeight: '100vh',
     },
     spinnerContainer: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
+    },
+    noResults: {
+      color: '#FFFFFF',
+      fontSize: '24px',
+      marginTop: '20px',
     }
   }
 
@@ -75,6 +52,8 @@ export default function MainView() {
         <div style={styles.spinnerContainer}>
           <Spinner />
         </div>
+      ) : spaceImages.length === 0 && searchTerm ? (
+        <p style={styles.noResults}>No results found for "{searchTerm}"</p>
       ) : (
         <div style={styles.container}>
           {spaceImages.map((image) => (

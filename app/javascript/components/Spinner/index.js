@@ -4,7 +4,7 @@ export default function Spinner() {
   const styles = {
     spinner: {
       border: '16px solid #f3f3f3',
-      borderTop: '16px solid #3498db',
+      borderTop: '16px solid #1D1D21', 
       borderRadius: '50%',
       width: '120px',
       height: '120px',
