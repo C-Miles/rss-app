@@ -12,7 +12,12 @@ export default function Modal({ image, onClose }) {
           <h2>{image.title}</h2>
           <p>{new Date(image.publication_date).toLocaleDateString()}</p>
           <p dangerouslySetInnerHTML={{ __html: image.description }} />
-          <a href={image.link} target="_blank" rel="noopener noreferrer" style={styles.link}>
+          <a
+            href={image.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.link}
+          >
             View Original
           </a>
         </div>
@@ -22,56 +27,56 @@ export default function Modal({ image, onClose }) {
 }
 
 const styles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(75, 75, 85, 0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-  },
-  modal: {
-    backgroundColor: '#1D1D21',
-    borderRadius: '8px',
-    padding: '2rem',
-    width: '75%',
-    maxWidth: '600px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    overflowY: 'auto',
-    position: 'relative',
-    color: '#FFFFFF',
-  },
   closeButton: {
-    position: 'absolute',
-    top: '0.1em',
-    right: '0.1em',
-    cursor: 'pointer',
     background: 'transparent',
     border: 'none',
-    fontSize: '2rem',
     color: '#FFFFFF',
-  },
-  image: {
-    width: '100%',
-    height: 'auto',
-    objectFit: 'contain',
-    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '2rem',
+    position: 'absolute',
+    right: '2%',
+    top: '2%',
   },
   content: {
-    marginTop: '1rem',
+    marginTop: '5%',
     textAlign: 'center',
     width: '100%',
-    color: '#FFFFFF',
+  },
+  image: {
+    borderRadius: '8%',
+    maxHeight: '40vh',
+    maxWidth: '100%',
+    objectFit: 'contain',
   },
   link: {
     color: '#FFFFFF',
+    marginTop: '5%',
     textDecoration: 'underline',
-    marginTop: '1rem',
+  },
+  modal: {
+    alignItems: 'center',
+    backgroundColor: '#1D1D21',
+    borderRadius: '1rem',
+    color: '#FFFFFF',
+    display: 'flex',
+    flexDirection: 'column',
+    maxHeight: '80vh',
+    maxWidth: '90%',
+    width: '60%',
+    overflowY: 'auto',
+    padding: '5%',
+    position: 'relative',
+  },
+  overlay: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(75, 75, 85, 0.7)',
+    bottom: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    left: 0,
+    position: 'fixed',
+    right: 0,
+    top: 0,
+    zIndex: 1000,
   },
 }
