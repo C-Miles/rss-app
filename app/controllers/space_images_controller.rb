@@ -1,5 +1,3 @@
-# app/controllers/space_images_controller.rb
-
 class SpaceImagesController < ApplicationController
   before_action :set_space_images, only: %i[index]
 
@@ -11,6 +9,11 @@ class SpaceImagesController < ApplicationController
 
   private
   def set_space_images
-    @space_images = SpaceImage.all.order(publication_date: :desc)
+    @space_images = if params[:search].present?
+      SpaceImage.search_by_title_and_description(params[:search])
+                .order(publication_date: :desc)
+    else
+      SpaceImage.all.order(publication_date: :desc)
+    end
   end
 end
