@@ -34,7 +34,7 @@ span {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 7rem;
+  row-gap: 4rem;
   column-gap: 3rem;
   justify-items: center;
   width: 100%;
