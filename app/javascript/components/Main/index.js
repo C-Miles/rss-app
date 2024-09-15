@@ -1,26 +1,37 @@
 import React, { useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import axios from 'axios'
 
-import MainView from './Main'
+import MainView from './MainView'
 
 export default function MainContainer() {
   const [spaceImages, setSpaceImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [page, setPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
+
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+  })
 
   useEffect(() => {
     fetchImages()
-  }, [searchTerm])
+  }, [searchTerm, page])
 
   const fetchImages = async () => {
     setLoading(true)
     try {
       const response = await axios.get('/space_images.json', {
-        params: { search: searchTerm }
+        params: { search: searchTerm, page }
       })
-      setSpaceImages(response.data)
+
+      const fetchedImages = response.data
+      if (fetchedImages.length < 12) setHasMore(false)
+
+      setSpaceImages((prevImages) => [...prevImages, ...fetchedImages])
     } catch (err) {
       console.error('Error fetching space images:', err)
       setError(err)
@@ -39,17 +50,26 @@ export default function MainContainer() {
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value)
+    setPage(1)
+    setSpaceImages([])
   }
+
+  useEffect(() => {
+    if (inView && hasMore && !loading) {
+      setPage((prevPage) => prevPage + 1)
+    }
+  }, [inView, hasMore, loading])
 
   return (
     <MainView
+      bottomRef={ref}
       closeModal={closeModal}
       error={error}
       handleImageClick={handleImageClick}
       handleInputChange={handleInputChange}
+      hasMore={hasMore}
       loading={loading}
       searchTerm={searchTerm}
-      selectedImage={selectedImage}
       spaceImages={spaceImages}
     />
   )

@@ -6,9 +6,11 @@ import SpaceImage from '../SpaceImage'
 import Spinner from '../Spinner'
 
 export default function MainView({
+  bottomRef,
   closeModal,
   handleImageClick,
   handleInputChange,
+  hasMore,
   loading,
   searchTerm,
   selectedImage,
@@ -41,14 +43,20 @@ export default function MainView({
       color: '#FFFFFF',
       fontSize: '24px',
       marginTop: '20px',
-    }
+    },
+    bottomSpinner: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: '20px',
+    },
   }
 
   return (
     <div style={styles.wrapper}>
       <SearchBar value={searchTerm} onChange={handleInputChange} />
 
-      {loading ? (
+      {loading && spaceImages.length === 0 ? (
         <div style={styles.spinnerContainer}>
           <Spinner />
         </div>
@@ -67,6 +75,12 @@ export default function MainView({
       )}
 
       {selectedImage && <Modal image={selectedImage} onClose={closeModal} />}
+
+      {hasMore && (
+        <div ref={bottomRef} style={styles.bottomSpinner}>
+          <Spinner size={40} />
+        </div>
+      )}
     </div>
   )
 }
